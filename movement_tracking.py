@@ -98,4 +98,20 @@ def track(video_path, saving_dir, folder_name = None):
     save_movement_tracking_data(video_path, saving_path)
 
 #%%
-track("control_de_movimiento\DELTA45_NSTEPS40_TIMESTEP50_RUTINA_5.mp4", "saving_test", folder_name="mean")
+if __name__ == "__main__":
+    while True:
+            saving_dir = input("Saving directory path: ")
+            if not os.path.isdir(saving_dir):
+                print("Invalid directory path")
+            else: 
+                print(f"Selected '{saving_dir}' as saving directory")
+                break
+                
+    while True:
+        video_path = input("Video path: ") 
+        
+        if not os.path.exists(video_path):
+            print("Invalid video path, try again")
+            continue
+        print(f"Tracking {video_path}")
+        track(video_path, saving_dir)
