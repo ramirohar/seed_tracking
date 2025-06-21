@@ -133,6 +133,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/matplotlib-inline-0.1.7-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/mkl-2024.2.2-h66d3029_15.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/munkres-1.1.4-pyh9f0ad1d_0.tar.bz2
+      - conda: https://conda.anaconda.org/conda-forge/noarch/narwhals-1.41.0-pyhe01879c_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/nest-asyncio-1.6.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/networkx-3.4.2-pyh267e887_2.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/numpy-2.2.6-py313hefb8edb_0.conda
@@ -151,6 +152,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/win-64/pillow-11.2.1-py313hda88b71_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pixman-0.46.0-had0cd8c_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.3.8-pyhe01879c_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/plotly-6.1.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/prompt-toolkit-3.0.51-pyha770c72_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/psutil-7.0.0-py313ha7868ed_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/pthread-stubs-0.4-h0e40799_1002.conda
@@ -1834,6 +1836,15 @@ packages:
   license_family: Apache
   size: 12452
   timestamp: 1600387789153
+- conda: https://conda.anaconda.org/conda-forge/noarch/narwhals-1.41.0-pyhe01879c_0.conda
+  sha256: 7e649844ad554d5c737aeacd679056c8928038d3969dcb098e62be137a1c4929
+  md5: 580a340cc0f5eab2b18adb1b55e032e5
+  depends:
+  - python >=3.9
+  - python
+  license: MIT
+  size: 225753
+  timestamp: 1748271935371
 - conda: https://conda.anaconda.org/conda-forge/noarch/nest-asyncio-1.6.0-pyhd8ed1ab_1.conda
   sha256: bb7b21d7fd0445ddc0631f64e66d91a179de4ba920b8381f29b9d006a42788c0
   md5: 598fd7d4d0de2455fb74f56063969a97
@@ -2107,6 +2118,18 @@ packages:
   license_family: MIT
   size: 23531
   timestamp: 1746710438805
+- conda: https://conda.anaconda.org/conda-forge/noarch/plotly-6.1.2-pyhd8ed1ab_0.conda
+  sha256: ae70322038e849c40a1fb701196c17b62a0b01907d7733a64f4f112e8ebbf39e
+  md5: f547ee092ef42452ddaffdfa59ff4987
+  depends:
+  - narwhals >=1.15.1
+  - packaging
+  - python >=3.9
+  constrains:
+  - ipywidgets >=7.6
+  license: MIT
+  size: 5906149
+  timestamp: 1748388709041
 - conda: https://conda.anaconda.org/conda-forge/noarch/prompt-toolkit-3.0.51-pyha770c72_0.conda
   sha256: ebc1bb62ac612af6d40667da266ff723662394c0ca78935340a5b5c14831227b
   md5: d17ae9db4dc594267181bd199bf9a551

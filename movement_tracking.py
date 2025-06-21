@@ -3,6 +3,8 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import plotly.tools as tls
+import plotly.io as pio
 
 def bg_median_tracking(video, tracking_region):
     video.set(cv2.CAP_PROP_POS_FRAMES, 0)
@@ -50,12 +52,16 @@ def select_ROI(video):
     return crop
 
 
-def save_trajectory_plot(x, saving_path, filename="x_vs_frame"):
-    plt.figure()
-    plt.errorbar(np.arange(len(x)),x, ls="",fmt="." , markersize=3)
-    plt.xlabel("frame")
+def save_trajectory_plot(x, fps, saving_path, filename="x_vs_t"):
+    fig, ax = plt.subplots()
+    ax.errorbar(np.arange(len(x))/fps,x, ls="-",fmt="." , markersize=5)
+    ax.set_xlabel("time [s]")
     plt.ylabel("x [px]")
+   
     plt.savefig(os.path.join(saving_path, filename))
+    
+    plotly_fig = tls.mpl_to_plotly(fig)
+    pio.write_html(plotly_fig, os.path.join(saving_path,f"{filename}_interactive.html"))
 
 
 def save_trajectory_data(x, y, fps, saving_path, filename="trajectory.pickle"):
@@ -105,7 +111,7 @@ def save_movement_tracking_data(video_path, saving_path):
     x, y, bg = bg_median_tracking(video, tracking_region)
 
     save_image(bg, saving_path)
-    save_trajectory_plot(x, saving_path)
+    save_trajectory_plot(x, fps, saving_path)
     save_trajectory_data(x, y, fps, saving_path)
     save_trajectory_video(video, x, y, fps, tracking_region, saving_path)
 
